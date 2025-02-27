@@ -11,6 +11,11 @@ import java.math.BigDecimal;
 @Entity
 public class CurrencyExchange {
 
+
+
+
+
+
     @Id
     private Long id;
     @Column(name = "currency_from")

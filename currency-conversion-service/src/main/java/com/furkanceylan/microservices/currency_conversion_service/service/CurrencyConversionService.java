@@ -12,6 +12,6 @@ public class CurrencyConversionService {
 
 
     public CurrencyConversion calculateCurrencyConversion(String from ,String to, BigDecimal quantity){
-        return  new CurrencyConversion(1000L,from,to,quantity, BigDecimal.ONE,BigDecimal.ONE,"");
+        return  new CurrencyConversion(5000L,from,to,quantity, BigDecimal.ONE,BigDecimal.ONE,"");
     }
 }
