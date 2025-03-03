@@ -1,0 +1,17 @@
+package com.furkanceylan.microservices.currency_conversion_service.config;
+
+
+import com.furkanceylan.microservices.currency_conversion_service.entities.CurrencyConversion;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@FeignClient(name = "currency_exchange", url = "localhost:8000")
+public interface CurrencyExchangeProxy {
+
+
+
+    @GetMapping("/currency-exchange/from/{from}/to/{to}")
+    public ResponseEntity<CurrencyConversion> retrieveExchangeValue(@PathVariable String from, @PathVariable String to);
+}

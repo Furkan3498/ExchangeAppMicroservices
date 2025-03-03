@@ -20,13 +20,7 @@ public class CurrencyExchangeController {
 
 
     @GetMapping("/currency-exchange/from/{from}/to/{to}")
-
-
-
-
-
-    public ResponseEntity<CurrencyExchange> retrieveExchangeValue(@PathVariable String from,
-                                                                  @PathVariable String to){
+    public ResponseEntity<CurrencyExchange> retrieveExchangeValue(@PathVariable String from, @PathVariable String to){
 
 
         return ResponseEntity.ok(currencyExchangeService.retrieveExchange(from,to));
