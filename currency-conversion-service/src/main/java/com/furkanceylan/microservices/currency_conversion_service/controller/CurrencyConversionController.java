@@ -26,17 +26,7 @@ public class CurrencyConversionController {
 
     public ResponseEntity< CurrencyConversion> calculateCurrencyConversion(@PathVariable String from, @PathVariable String to, @PathVariable BigDecimal quantity){
 
-        HashMap<String,String > urlVariables = new HashMap<>();
-        urlVariables.put("from",from);
-        urlVariables.put("to",to);
-
-        ResponseEntity<CurrencyConversion> responseEntity =new RestTemplate().getForEntity("http://localhost:8000/currency-exchange/from/{from}/to/{to}",CurrencyConversion.class,urlVariables);
-
-        CurrencyConversion currencyConversion = responseEntity.getBody();
-
-
-      var result=   new CurrencyConversion(currencyConversion.getId(),from,to,quantity,currencyConversion.getConversionMultiple(),quantity.multiply(currencyConversion.getConversionMultiple()),currencyConversion.getEnvironment());
-    return ResponseEntity.ok(result);
+        return ResponseEntity.ok(currencyConversionService.calculateCurrencyConversion(from,to,quantity));
 }
 
 }
