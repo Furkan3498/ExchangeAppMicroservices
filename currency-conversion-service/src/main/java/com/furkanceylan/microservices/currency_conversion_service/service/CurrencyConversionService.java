@@ -1,5 +1,6 @@
 package com.furkanceylan.microservices.currency_conversion_service.service;
 
+import com.furkanceylan.microservices.currency_conversion_service.config.CurrencyExchangeProxy;
 import com.furkanceylan.microservices.currency_conversion_service.entities.CurrencyConversion;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -10,8 +11,11 @@ import java.util.HashMap;
 
 @Service
 public class CurrencyConversionService {
+    private final CurrencyExchangeProxy currencyExchangeProxy;
 
-
+    public CurrencyConversionService(CurrencyExchangeProxy currencyExchangeProxy) {
+        this.currencyExchangeProxy = currencyExchangeProxy;
+    }
 
 
     public CurrencyConversion calculateCurrencyConversion(String from ,String to, BigDecimal quantity){
@@ -26,7 +30,24 @@ public class CurrencyConversionService {
 
 
 
-        return   new CurrencyConversion(currencyConversion.getId(),from,to,quantity,currencyConversion.getConversionMultiple(),quantity.multiply(currencyConversion.getConversionMultiple()),currencyConversion.getEnvironment());
+        return   new CurrencyConversion(currencyConversion.getId(),from,to,quantity,
+                currencyConversion.getConversionMultiple(),
+                quantity.multiply(currencyConversion.getConversionMultiple()),
+                currencyConversion.getEnvironment() +" normal");
 
     }
+    public CurrencyConversion calculateCurrencyConversionFeign(String from ,String to, BigDecimal quantity){
+
+
+        CurrencyConversion currencyConversion = currencyExchangeProxy.retrieveExchangeValue(from,to).getBody();
+
+
+
+        return   new CurrencyConversion(currencyConversion.getId(),from,to,quantity,
+                currencyConversion.getConversionMultiple(),
+                quantity.multiply(currencyConversion.getConversionMultiple()),
+                currencyConversion.getEnvironment() +" feign");
+
+    }
+
 }
