@@ -6,14 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="api-gateway" />
         <module name="currency-exchange-service" />
-        <module name="api_gateway" />
         <module name="currency-conversion-service" />
         <module name="naming-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="api-gateway" target="17" />
+      <module name="api_gateway" target="17" />
       <module name="api_gateway (1)" target="17" />
       <module name="api_gateway (2)" target="17" />
     </bytecodeTargetLevel>
