@@ -7,3 +7,7 @@ http://localhost:8100/currency-conversion-feign/from/USD/to/INR/quantity/10
 
 Eureka Service
 http://localhost:8761/
+
+
+#API GATEWAY
+http://localhost:8761/CURRENCY-EXCHANGE-SERVICE/currency-exchange/from/USD/to/INR
