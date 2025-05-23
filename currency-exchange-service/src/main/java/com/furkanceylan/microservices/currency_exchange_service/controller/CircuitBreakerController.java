@@ -21,7 +21,7 @@ public class CircuitBreakerController {
             return responseEntity.getBody();
     }
 
-    public String hardcodedResponse(){
+    public String hardcodedResponse(Exception ex){
         return "fallback method";
     }
 }
