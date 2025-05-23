@@ -20,4 +20,8 @@ public class CircuitBreakerController {
 
             return responseEntity.getBody();
     }
+
+    public String hardcodedResponse(){
+        return "fallback method";
+    }
 }
