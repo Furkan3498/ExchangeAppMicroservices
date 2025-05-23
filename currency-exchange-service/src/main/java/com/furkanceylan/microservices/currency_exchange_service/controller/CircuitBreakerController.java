@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 public class CircuitBreakerController {
     private Logger logger = LoggerFactory.getLogger(CircuitBreakerController.class);
     @GetMapping("/sample-api")
-    @Retry(name = "sample-api")
+    @Retry(name = "sample-api", fallbackMethod = "hardcodedResponse")
     public String sampleApi(){
         logger.info("Sample api call received");
         ResponseEntity<String> responseEntity = new RestTemplate().getForEntity("http://localhost:8080/some-dummy-url",String.class);
