@@ -18,9 +18,11 @@ public class CircuitBreakerController {
     @RateLimiter(name = "default")
     public String sampleApi(){
         logger.info("Sample api call received");
-        ResponseEntity<String> responseEntity = new RestTemplate().getForEntity("http://localhost:8080/some-dummy-url",String.class);
+      /*  ResponseEntity<String> responseEntity = new RestTemplate().getForEntity("http://localhost:8080/some-dummy-url",String.class);
 
-            return responseEntity.getBody();
+            return responseEntity.getBody();*/
+
+        return "Sample-Api";
     }
 
     public String hardcodedResponse(Exception ex){
